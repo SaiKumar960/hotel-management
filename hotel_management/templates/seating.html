@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seating Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/background.jpg') }}"); /* Background image */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h2 {
+            color: #ff6347; /* Change color */
+            font-family: 'Courier New', Courier, monospace; /* Change font style */
+            text-align: center; /* Center align */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); }
+            to { transform: translateY(0); }
+        }
+        #seating {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .table {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .table img {
+            width: 150px; /* Increased width */
+            height: 150px; /* Increased height */
+            margin-bottom: 10px;
+                padding: 20px; /* Stroke of 20px */
+                background-color: #ffffff; /* Background color for stroke */
+            border-radius: 5px; /* Rounded corners for stroke */
+        }
+        .table:hover {
+            transform: scale(1.05);
+        }
+        .table.selected {
+            border-color: #28a745;
+            transform: scale(2); /* 2X larger */
+            animation: pulse 1s infinite;
+        }
+        .table span {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.2s, transform 0.2s;
+            position: fixed; /* Ensure the button is always visible */
+            bottom: 20px; /* Position it at the bottom */
+            right: 20px; /* Position it at the right */
+        }
+        .button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(40, 167, 69, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Select Your Table</h2>
+    <form action="{{ url_for('payment') }}" method="post">
+        <div id="seating">
+            <!-- Seating Plan with 16 Tables -->
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 1">
+                <span>Table 1</span>
+                <input type="radio" name="table" value="Table 1" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 2">
+                <span>Table 2</span>
+                <input type="radio" name="table" value="Table 2" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 3">
+                <span>Table 3</span>
+                <input type="radio" name="table" value="Table 3" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 4">
+                <span>Table 4</span>
+                <input type="radio" name="table" value="Table 4" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 5">
+                <span>Table 5</span>
+                <input type="radio" name="table" value="Table 5" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 6">
+                <span>Table 6</span>
+                <input type="radio" name="table" value="Table 6" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 7">
+                <span>Table 7</span>
+                <input type="radio" name="table" value="Table 7" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 8">
+                <span>Table 8</span>
+                <input type="radio" name="table" value="Table 8" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 9">
+                <span>Table 9</span>
+                <input type="radio" name="table" value="Table 9" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 10">
+                <span>Table 10</span>
+                <input type="radio" name="table" value="Table 10" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 11">
+                <span>Table 11</span>
+                <input type="radio" name="table" value="Table 11" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 12">
+                <span>Table 12</span>
+                <input type="radio" name="table" value="Table 12" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 13">
+                <span>Table 13</span>
+                <input type="radio" name="table" value="Table 13" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 14">
+                <span>Table 14</span>
+                <input type="radio" name="table" value="Table 14" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 15">
+                <span>Table 15</span>
+                <input type="radio" name="table" value="Table 15" hidden>
+            </div>
+            <div class="table" onclick="selectTable(this)">
+                <img src="{{ url_for('static', filename='images/table.jpg') }}" alt="Table 16">
+                <span>Table 16</span>
+                <input type="radio" name="table" value="Table 16" hidden>
+            </div>
+        </div>
+        {% for item in items %}
+            <input type="hidden" name="items" value="{{ item }}">
+        {% endfor %}
+        <input type="submit" value="Confirm Order" class="button">
+    </form>
+    <script>
+        function selectTable(element) {
+            // Remove 'selected' class from all tables
+            document.querySelectorAll('.table').forEach(table => {
+                table.classList.remove('selected');
+                table.querySelector('input[type="radio"]').checked = false;
+            });
+            // Add 'selected' class to the clicked table
+            element.classList.add('selected');
+            element.querySelector('input[type="radio"]').checked = true;
+        }
+    </script>
+</body>
+</html>

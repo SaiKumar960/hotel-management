@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        #menu {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #menu h2 {
+            text-align: center;
+            color: #343a40;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .menu-item img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+        .menu-item span {
+            font-size: 18px;
+        }
+        .menu-item span.price {
+            color: #28a745;
+        }
+        .select-button {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 200px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .select-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <h2>Menu</h2>
+        <form action="{{ url_for('show_seating') }}" method="post">
+            <div class="menu-grid">
+                <!-- South Indian Menu Items -->
+                <div class="menu-item">
+                    <img src="{{ url_for('static', filename='images/idli.jpg') }}" alt="Idli">
+                    <span>Idli</span>
+                    <span class="price">&#8377;10.00</span>
+                    <input type="checkbox" name="items" value="Idli">
+                </div>
+                <div class="menu-item">
+                    <img src="{{ url_for('static', filename='images/dosa.jpg') }}" alt="Dosa">
+                    <span>Dosa</span>
+                    <span class="price">&#8377;20.00</span>
+                    <input type="checkbox" name="items" value="Dosa">
+                </div>
+                <div class="menu-item">
+                    <img src="{{ url_for('static', filename='images/vada.jpg') }}" alt="Vada">
+                    <span>Vada</span>
+                    <span class="price">&#8377;15.00</span>
+                    <input type="checkbox" name="items" value="Vada">
+                </div>
+                <div class="menu-item">
+                    <img src="{{ url_for('static', filename='images/uttapam.jpg') }}" alt="Uttapam">
+                    <span>Uttapam</span>
+                    <span class="price">&#8377;25.00</span>
+                    <input type="checkbox" name="items" value="Uttapam">
+                </div>
+                <div class="menu-item">
+                    <img src="{{ url_for('static', filename='images/pesarattu.jpg') }}" alt="Pesarattu">
+                    <span>Pesarattu</span>
+                    <span class="price">&#8377;20.00</span>
+                    <input type="checkbox" name="items" value="Pesarattu">
+                </div>
+                <div class="menu-item">
+                    <img src="{{ url_for('static', filename='images/upma.jpg') }}" alt="Upma">
+                    <span>Upma</span>
+                    <span class="price">&#8377;20.00</span>
+                    <input type="checkbox" name="items" value="Upma">
+                </div>
+                <div class="menu-item">
+                    <img src="{{ url_for('static', filename='images/puri.jpg') }}" alt="Puri">
+                    <span>Puri</span>
+                    <span class="price">&#8377;20.00</span>
+                    <input type="checkbox" name="items" value="Puri">
+                </div>
+            </div>
+            <!-- Add your menu items here -->
+            <input type="submit" value="Select Table" class="select-button">
+        </form>
+    </div>
+</body>
+</html>
